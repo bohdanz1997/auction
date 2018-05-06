@@ -87,7 +87,12 @@ export default {
       })
 
       // Fetch the user.
-      await this.$store.dispatch('auth/fetchUser')
+      await Promise.all([
+        this.$store.dispatch('auth/fetchUser'),
+        this.$store.dispatch('auction/fetch'),
+        this.$store.dispatch('lot/fetch'),
+        this.$store.dispatch('bet/fetch')
+      ])
 
       // Redirect home.
       this.$router.push({ name: 'home' })

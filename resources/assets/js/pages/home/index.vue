@@ -1,31 +1,36 @@
 <template>
   <div class="row">
-    <div class="col-lg-4 col-md-6" v-for="lot in lots">
-      <lot-item :lot="lot" />
+    <div class="col-lg-4 col-md-6"
+         v-for="auction in auctions"
+    >
+      <auction-item :auction="auction" :lot="getLot(auction.lot.id)" />
     </div>
   </div>
 </template>
 
 <script>
-  import axios from 'axios'
-  import LotItem from './lot-item'
+  import { mapGetters } from 'vuex'
+  import AuctionItem from './auction-item'
 
   export default {
-    components: { LotItem },
+    components: { AuctionItem },
 
     metaInfo () {
       return { title: 'Головна' }
     },
 
-    data: () => ({
-      lots: [],
-    }),
-
-    async created() {
-      const response = await axios.get('/api/lot')
-      this.lots = response.data
+    computed: {
+      ...mapGetters({
+        auctions: 'auction/items',
+        lots: 'lot/items'
+      })
     },
 
+    methods: {
+      getLot (lotId) {
+        return this.lots.find(x => x.id === lotId)
+      }
+    }
   }
 </script>
 

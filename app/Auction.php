@@ -8,6 +8,8 @@ class Auction extends Model
 {
     protected $table = 'auction';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'start_datetime',
         'end_plan_datetime',
@@ -20,6 +22,6 @@ class Auction extends Model
     ];
 
     public function lot() {
-        return $this->hasOne(Lot::class);
+        return $this->belongsTo(Lot::class);
     }
 }

@@ -68,10 +68,10 @@
 
 <script>
   import Form from 'vform'
-  import objectToFormData from '../../objectToFormData'
+  import { mapActions, mapGetters } from 'vuex'
+  import objectToFormData from '../../../objectToFormData'
 
   export default {
-    name: "create",
     data: () => ({
       form: new Form({
         name: '',
@@ -87,18 +87,34 @@
         cert_id: '',
       })
     }),
+
+    computed: {
+      ...mapGetters({
+
+      })
+    },
+
     methods: {
+      ...mapActions({
+        addLot: 'lot/add'
+      }),
+
       selectMainPicture(files) {
         this.form.main_picture = files[0]
       },
+
       selectPictures(files) {
         this.form.pictures = files
       },
+
       async update () {
-        await this.form.submit('post', '/api/lot', {
-          transformRequest: [data => objectToFormData(data)],
-        })
-        this.$router.push({ name: 'admin.lot' })
+        try {
+          const { data } = await this.form.submit('post', '/api/lot', {
+            transformRequest: [data => objectToFormData(data)],
+          })
+          this.addLot(data)
+          this.$router.push({ name: 'admin.lot' })
+        } catch (err) {}
       }
     }
   }

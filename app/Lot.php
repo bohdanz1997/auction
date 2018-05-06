@@ -24,6 +24,10 @@ class Lot extends Model
         'cert_id',
     ];
 
+    public function auctions() {
+        return $this->hasMany(Auction::class);
+    }
+
     public function pictures() {
         return $this->hasMany(Picture::class);
     }

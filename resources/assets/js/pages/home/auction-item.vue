@@ -2,7 +2,7 @@
   <div class="lot">
     <card>
       <div class="lot-img">
-        <router-link to="/lot/1">
+        <router-link :to="{ name: 'lot.view', params: { id: auction.id } }">
           <img :src="lot.main_picture" alt="">
         </router-link>
       </div>
@@ -23,7 +23,7 @@
           {{ lot.start_datetime }}
         </div>
         <div class="lot-price">
-          120.00
+          {{ auction.start_price }}
           <span class="currency">грн</span>
         </div>
       </div>
@@ -32,9 +32,16 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
+
   export default {
-    name: "lot-item",
-    props: ['lot'],
+    props: ['auction', 'lot'],
+
+    computed: {
+      ...mapGetters({
+        auctions: 'auction/items'
+      }),
+    }
   }
 </script>
 
@@ -68,6 +75,9 @@
       font-size: 14px;
     }
     &-description {
+      ul {
+        padding-left: 0;
+      }
       li {
         list-style-type: none;
         color: #969696;

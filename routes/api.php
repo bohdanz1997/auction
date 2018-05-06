@@ -29,6 +29,9 @@ Route::group(/**
     Route::get('lot', 'LotController@index');
     Route::post('lot', 'LotController@store');
     Route::delete('lot/{lot}', 'LotController@destroy');
+
+    Route::apiResource('auction', 'AuctionController');
+    Route::apiResource('bet', 'BetController');
 });
 
 Route::group(['middleware' => 'guest:api'], function () {
