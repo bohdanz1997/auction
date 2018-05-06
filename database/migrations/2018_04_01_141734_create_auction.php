@@ -22,6 +22,9 @@ class CreateAuction extends Migration
             $table->decimal('max_price')->nullable();
             $table->integer('step')->nullable();
             $table->text('message')->nullable();
+            $table->unsignedInteger('lot_id')->nullable();
+
+            $table->foreign('lot_id')->references('id')->on('lot');
         });
     }
 

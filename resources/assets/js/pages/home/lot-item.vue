@@ -55,7 +55,7 @@
       justify-content: center;
       max-height: 300px;
       img {
-        max-height: 300px;
+        height: 220px;
         max-width: 100%;
       }
     }
@@ -70,11 +70,12 @@
     &-description {
       li {
         list-style-type: none;
+        color: #969696;
+        font-weight: bold;
         font-size: 13px;
-        color: #000000;
+
         span {
-          color: #969696;
-          font-weight: bold;
+          color: #000000;
         }
       }
     }
