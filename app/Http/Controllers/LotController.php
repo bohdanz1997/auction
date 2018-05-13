@@ -11,7 +11,7 @@ class LotController extends Controller
 {
     public function index()
     {
-        return Lot::with('breed', 'user', 'gender', 'cert', 'auctions')->get();
+        return Lot::with('breed', 'user', 'gender', 'cert', 'pictures', 'auctions')->get();
     }
 
     public function store()

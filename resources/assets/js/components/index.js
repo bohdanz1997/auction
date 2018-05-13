@@ -9,6 +9,7 @@ import FormSelect from './Form/Select'
 import FormTextArea from './Form/TextArea'
 import FormFile from './Form/File'
 import VTable from './VTable'
+import Slider from './Slider'
 import { HasError, AlertError, AlertSuccess } from 'vform'
 
 // Components that are registered globaly.
@@ -26,6 +27,7 @@ import { HasError, AlertError, AlertSuccess } from 'vform'
   FormTextArea,
   FormFile,
   VTable,
+  Slider,
 ].forEach(Component => {
   Vue.component(Component.name, Component)
 })

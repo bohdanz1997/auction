@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Auction;
 use App\Bet;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,16 @@ class BetController extends Controller
         $betData = request()->all();
         $betData['user_id'] = $userId;
 
-        return Bet::create($betData);
+        $bet = Bet::create($betData);
+        $bet->load('user');
+
+        $auction = Auction::find($bet->auction_id);
+
+        $auction->max_price = $bet->price;
+        $auction->save();
+        $auction->load('bets');
+
+        return compact('bet', 'auction');
     }
 
     public function update(Bet $bet)

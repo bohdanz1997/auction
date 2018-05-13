@@ -21,6 +21,10 @@ class Auction extends Model
         'lot_id',
     ];
 
+    public function bets() {
+        return $this->hasMany(Bet::class);
+    }
+
     public function lot() {
         return $this->belongsTo(Lot::class);
     }

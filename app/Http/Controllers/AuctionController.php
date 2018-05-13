@@ -9,7 +9,7 @@ class AuctionController extends Controller
 {
     public function index()
     {
-        return Auction::with('lot')->get();
+        return Auction::with('lot', 'bets')->get();
     }
 
     public function store()
@@ -28,7 +28,7 @@ class AuctionController extends Controller
         $auctionData = request()->all();
 
         $auction = Auction::create($auctionData);
-        $auction->load('lot');
+        $auction->load('lot.pictures');
 
         return $auction;
     }

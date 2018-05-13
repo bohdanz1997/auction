@@ -7,7 +7,7 @@
         </router-link>
       </div>
       <div class="lot-header">
-        <router-link to="/lot/1">
+        <router-link :to="{ name: 'lot.view', params: { id: auction.id } }">
           {{ lot.name }}
         </router-link>
       </div>
@@ -23,7 +23,7 @@
           {{ lot.start_datetime }}
         </div>
         <div class="lot-price">
-          {{ auction.start_price }}
+          {{ auction.max_price }}
           <span class="currency">грн</span>
         </div>
       </div>
