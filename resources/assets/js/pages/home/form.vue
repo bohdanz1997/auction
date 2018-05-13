@@ -3,7 +3,6 @@
     <b-row>
       <b-col md="6">
         <b-form-input
-          :placeholder="auction.max_price"
           v-model="form.price"
           class="price-input"
           type="number"
@@ -74,7 +73,7 @@
 
           this.form.fill({
             ...this.form.data(),
-            price: data.bet.price + this.auction.step
+            price: parseFloat(data.bet.price) + parseFloat(this.auction.step)
           })
 
           this.$emit('submit', data)

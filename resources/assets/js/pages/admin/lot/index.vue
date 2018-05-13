@@ -39,7 +39,7 @@
 
     methods: {
       async removeLot(lot) {
-        const response = await axios.delete(`api/lot/${lot.id}`)
+        const { data } = await axios.delete(`api/lot/${lot.id}`)
         this.lots = this.lots.filter(x => x.id !== lot.id)
       },
     },

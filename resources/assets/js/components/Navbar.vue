@@ -11,7 +11,6 @@
 
       <div id="navbarToggler" class="collapse navbar-collapse">
         <ul class="navbar-nav">
-          <locale-dropdown/>
           <!-- <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
           </li> -->
@@ -31,12 +30,12 @@
                 {{ $t('settings') }}
               </router-link>
 
-              <router-link :to="{ name: 'admin.lot' }" class="dropdown-item pl-3">
+              <router-link v-show="user.is_admin" :to="{ name: 'admin.lot' }" class="dropdown-item pl-3">
                 <fa icon="cog" fixed-width/>
                 Лоти
               </router-link>
 
-              <router-link :to="{ name: 'admin.auction' }" class="dropdown-item pl-3">
+              <router-link v-show="user.is_admin" :to="{ name: 'admin.auction' }" class="dropdown-item pl-3">
                 <fa icon="cog" fixed-width/>
                 Аукціони
               </router-link>

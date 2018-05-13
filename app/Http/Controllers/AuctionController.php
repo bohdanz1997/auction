@@ -17,9 +17,7 @@ class AuctionController extends Controller
         $this->validate(request(), [
             'start_datetime' => 'required',
             'end_plan_datetime' => 'required',
-            'end_datetime' => 'required',
             'start_price' => 'required',
-            'max_price' => 'required',
             'step' => 'required',
             'message' => 'required',
             'lot_id' => 'required',
@@ -27,8 +25,10 @@ class AuctionController extends Controller
 
         $auctionData = request()->all();
 
+        $auctionData['max_price'] = $auctionData['start_price'];
+
         $auction = Auction::create($auctionData);
-        $auction->load('lot.pictures');
+        $auction->load('lot.pictures', 'bets');
 
         return $auction;
     }

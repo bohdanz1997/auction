@@ -17,6 +17,8 @@ const AdminAuctionCreate = () => import('~/pages/admin/auction/create').then(m =
 const Home = () => import('~/pages/home/index').then(m => m.default || m)
 const Lot = () => import('~/pages/home/lot').then(m => m.default || m)
 
+const Welcome = () => import('~/pages/welcome').then(m => m.default || m)
+
 export default [
   { path: '/', name: 'home', component: Home },
 
@@ -26,6 +28,8 @@ export default [
     component: Lot,
     props: true
   },
+
+  { path: '/', name: 'welcome', component: Welcome },
 
   { path: '/login', name: 'login', component: Login },
   { path: '/register', name: 'register', component: Register },

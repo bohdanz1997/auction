@@ -37,6 +37,10 @@ export const actions = {
     commit('LOT_ADD', { item: payload })
   },
 
+  set({ commit }, payload) {
+    commit('LOT_SET', { items: payload })
+  },
+
   update ({ commit }, payload) {
     commit('LOT_UPDATE', { newItem: payload })
   },
