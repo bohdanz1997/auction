@@ -48,9 +48,22 @@ class LotController extends Controller
         return $lotModel;
     }
 
-    public function update(Request $request, Lot $lot)
+    public function update(Lot $lot)
     {
-        //
+        $this->validate(request(), [
+            'name' => 'required',
+            'birth_date' => 'required',
+            'breed_id' => 'required',
+            'gender_id' => 'required',
+            'cert_id' => 'required',
+            'short_description' => 'required',
+        ]);
+
+        $lotData = request()->all();
+        $lot->update($lotData);
+        $lot->save();
+
+        return $lot;
     }
 
     public function destroy(Lot $lot)

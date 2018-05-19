@@ -33,13 +33,28 @@ class AuctionController extends Controller
         return $auction;
     }
 
-    public function update(Request $request, Auction $auction)
+    public function update(Auction $auction)
     {
-        //
+        $this->validate(request(), [
+            'start_datetime' => 'required',
+            'end_plan_datetime' => 'required',
+            'start_price' => 'required',
+            'step' => 'required',
+            'message' => 'required',
+            'lot_id' => 'required',
+        ]);
+
+        $auctionData = request()->all();
+
+        $auction->update($auctionData);
+        $auction->load('lot.pictures', 'bets');
+
+        return $auction;
     }
 
     public function destroy(Auction $auction)
     {
+
         return tap($auction)->delete();
     }
 }

@@ -6,7 +6,17 @@
       <auction-item :auction="auction" :lot="getLot(auction.lot.id)" />
     </div>
     <div v-show="!authCheck" class="col mt-5">
-      <h2 class="text-center">Уійдіть або зареєструйтесь щоб переглядати лоти</h2>
+      <div class="greet">
+        <img class="greet-img" src="/images/pic.jpg" alt="">
+      </div>
+      <div class="greet-msg text-center">
+        <p>
+          Привіт! На нашому сайті ви можете взяти участь у аукціонах по продажу домашніх улюбленців
+          та придбати собі одного, який вам сподобається. Щоб почати торги увійдіть або створіть ноий акаунт
+        </p>
+        <b-btn :to="{ name: 'register' }">Увійти</b-btn>
+        <b-btn :to="{ name: 'login' }">Зареєструватись</b-btn>
+      </div>
     </div>
   </div>
 </template>
@@ -42,5 +52,16 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="sass">
+  .greet
+    text-align: center
+    &-img
+      height: 400px
+    &-msg
+      margin-top: 1rem
+      padding: 0 8rem
+      p
+        font-size: 24px
+        color: #555
+
 </style>

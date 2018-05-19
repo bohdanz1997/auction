@@ -43,6 +43,6 @@ export const actions = {
 
   async remove ({ commit }, payload) {
     const { data } = await axios.delete(`/api/auction/${payload}`)
-    commit('AUCTION_REMOVE', { id: data })
+    commit('AUCTION_REMOVE', { id: data.id })
   },
 }

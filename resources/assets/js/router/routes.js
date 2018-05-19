@@ -10,9 +10,11 @@ const SettingsPassword = () => import('~/pages/settings/password').then(m => m.d
 
 const AdminLot = () => import('~/pages/admin/lot').then(m => m.default || m)
 const AdminLotCreate = () => import('~/pages/admin/lot/create').then(m => m.default || m)
+const AdminLotUpdate = () => import('~/pages/admin/lot/edit').then(m => m.default || m)
 
 const AdminAuction = () => import('~/pages/admin/auction').then(m => m.default || m)
 const AdminAuctionCreate = () => import('~/pages/admin/auction/create').then(m => m.default || m)
+const AdminAuctionUpdate = () => import('~/pages/admin/auction/edit').then(m => m.default || m)
 
 const Home = () => import('~/pages/home/index').then(m => m.default || m)
 const Lot = () => import('~/pages/home/lot').then(m => m.default || m)
@@ -46,9 +48,11 @@ export default [
 
   { path: '/admin/lot', component: AdminLot, name: 'admin.lot' },
   { path: '/admin/lot/create', component: AdminLotCreate, name: 'admin.lot.create' },
+  { path: '/admin/lot/edit/:id', component: AdminLotUpdate, name: 'admin.lot.edit', props: true },
 
   { path: '/admin/auction', component: AdminAuction, name: 'admin.auction' },
   { path: '/admin/auction/create', component: AdminAuctionCreate, name: 'admin.auction.create' },
+  { path: '/admin/auction/edit/:id', component: AdminAuctionUpdate, name: 'admin.auction.edit', props: true },
 
   { path: '*', component: NotFound }
 ]

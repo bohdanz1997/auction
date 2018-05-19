@@ -11,6 +11,7 @@ import {
   faCog,
   faPencilAlt,
   faTrashAlt,
+  faEdit
 } from '@fortawesome/fontawesome-free-solid/shakable.es'
 
 import {
@@ -25,6 +26,7 @@ fontawesome.library.add(
   faGithub,
   faPencilAlt,
   faTrashAlt,
+  faEdit
 )
 
 Vue.component('fa', FontAwesomeIcon)

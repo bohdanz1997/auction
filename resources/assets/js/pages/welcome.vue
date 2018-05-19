@@ -21,12 +21,16 @@
         {{ title }}
       </div>
 
-      <div class="links">
-        <a href="https://laravel.com/docs">Documentation</a>
-        <a href="https://laracasts.com">Laracasts</a>
-        <a href="https://laravel-news.com">News</a>
-        <a href="https://forge.laravel.com">Forge</a>
-        <a href="https://github.com/laravel/laravel">GitHub</a>
+      <div>
+        <img src="/images/pic.jpg" alt="">
+      </div>
+      <div class="text-center">
+        <p>
+          Привіт! На нашому сайті ви можете взяти участь у аукціонах по продажу домашніх улюбленців
+          та придбати собі одного, який вам сподобається. Щоб почати торги увійдіть або створіть ноий акаунт
+        </p>
+        <b-btn :to="{ name: 'register' }">Увійти</b-btn>
+        <b-btn :to="{ name: 'login' }">Зареєструватись</b-btn>
       </div>
     </div>
   </div>

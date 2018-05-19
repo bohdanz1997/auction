@@ -112,8 +112,8 @@
 
         return [
           { text: 'Порода', value: breed.name },
-          { text: 'Стать', value: cert.name },
-          { text: 'Сертифікат', value: gender.name },
+          { text: 'Стать', value: gender.name },
+          { text: 'Сертифікат', value: cert.name },
           { text: 'Зроблено ставок', value: this.auction.bets.length },
           { text: 'До закінчення', value: `${daysToEnd} днів` }
         ]

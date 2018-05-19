@@ -1,9 +1,16 @@
 <template>
-  <div class="main-layout">
-    <navbar/>
+  <div class="wrapper">
+    <div class="main-layout">
+      <navbar/>
 
-    <div class="container mt-4">
-      <child/>
+      <div class="container mt-4">
+        <child/>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="site-name">Аукціон</div>
+      <div class="copy">Всі права захищені</div>
+      <div class="clearfix"></div>
     </div>
   </div>
 </template>
@@ -19,3 +26,21 @@ export default {
   }
 }
 </script>
+
+<style lang="sass">
+  .wrapper
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    height: 100vh
+
+  .footer
+    bottom: 0
+    background-color: #eee
+    margin-top: 2rem
+    padding: 1.5rem
+    .site-name
+      float: left
+    .copy
+      float: right
+</style>

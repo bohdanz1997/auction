@@ -26,10 +26,7 @@ Route::group(/**
     Route::patch('settings/profile', 'Settings\ProfileController@update');
     Route::patch('settings/password', 'Settings\PasswordController@update');
 
-    Route::get('lot', 'LotController@index');
-    Route::post('lot', 'LotController@store');
-    Route::delete('lot/{lot}', 'LotController@destroy');
-
+    Route::apiResource('lot', 'LotController');
     Route::apiResource('auction', 'AuctionController');
     Route::apiResource('bet', 'BetController');
 });

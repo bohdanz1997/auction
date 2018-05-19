@@ -12,14 +12,23 @@
           hover
           :fields="fields"
           :items="auctions"
-        />
+        >
+          <template slot="actions" slot-scope="data">
+            <b-btn :to="{ name: 'admin.auction.edit', params: { id: data.item.id }}">
+              <fa icon="edit"/>
+            </b-btn>
+            <b-btn @click="removeAuction(data.item.id)">
+              <fa icon="trash-alt"/>
+            </b-btn>
+          </template>
+        </b-table>
       </b-col>
     </b-row>
   </div>
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
 
   export default {
     computed: {
@@ -33,7 +42,14 @@
         { key: 'start_price', label: 'Початкова ціна' },
         { key: 'max_price', label: 'Поточна ціна' },
         { key: 'step', label: 'Крок' },
+        { key: 'actions', label: 'Операції' },
       ])
+    },
+
+    methods: {
+      ...mapActions({
+        removeAuction: 'auction/remove'
+      }),
     }
   }
 </script>

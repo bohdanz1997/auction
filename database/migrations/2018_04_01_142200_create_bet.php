@@ -21,8 +21,8 @@ class CreateBet extends Migration
             $table->decimal('max_price')->nullable();
             $table->boolean('active')->default(true);
 
-            $table->foreign('auction_id')->references('id')->on('auction');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('auction_id')->references('id')->on('auction')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

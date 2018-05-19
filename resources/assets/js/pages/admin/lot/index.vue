@@ -4,44 +4,48 @@
       Створити
     </router-link>
     <div class="mt-3">
-      <v-table
-        :columns="columns"
-        :data="lots"
-        @remove-item="removeLot"
-        removeable
-      />
+      <b-table
+        striped
+        hover
+        :fields="fields"
+        :items="lots"
+      >
+        <template slot="actions" slot-scope="data">
+          <b-btn :to="{ name: 'admin.lot.edit', params: { id: data.item.id }}">
+            <fa icon="edit"/>
+          </b-btn>
+          <b-btn @click="removeLot(data.item.id)">
+            <fa icon="trash-alt"/>
+          </b-btn>
+        </template>
+      </b-table>
     </div>
   </card>
 </template>
 
 <script>
-  import axios from 'axios'
+  import { mapGetters, mapActions } from 'vuex'
 
   export default {
     middleware: 'auth',
 
-    data: () => ({
-      lots: [],
-    }),
-
     computed: {
-      columns: () => ([
-        { field: 'name', label: 'Ім\'я' },
-        { field: 'breed', label: 'Порода', prop: 'name' },
-        { field: 'short_description', label: 'Короткий опис' },
-      ])
-    },
+      ...mapGetters({
+        lots: 'lot/items'
+      }),
 
-    async created() {
-      const response = await axios.get('/api/lot')
-      this.lots = response.data
+      fields: () => ([
+        { key: 'name', label: 'Ім\'я' },
+        { key: 'breed.name', label: 'Порода' },
+        { key: 'short_description', label: 'Короткий опис' },
+        { key: 'actions', label: 'Операції' },
+      ]),
     },
 
     methods: {
-      async removeLot(lot) {
-        const { data } = await axios.delete(`api/lot/${lot.id}`)
-        this.lots = this.lots.filter(x => x.id !== lot.id)
-      },
+      ...mapActions({
+        removeLot: 'lot/remove'
+      })
     },
   }
 </script>

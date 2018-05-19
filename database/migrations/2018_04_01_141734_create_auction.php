@@ -24,7 +24,7 @@ class CreateAuction extends Migration
             $table->text('message')->nullable();
             $table->unsignedInteger('lot_id')->nullable();
 
-            $table->foreign('lot_id')->references('id')->on('lot');
+            $table->foreign('lot_id')->references('id')->on('lot')->onDelete('cascade');
         });
     }
 
